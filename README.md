@@ -13,21 +13,16 @@ complete ignorance of PEP8 and even a consistent personal style.
 Over the years I have learned and been taught new techniques and just generally
 improved in many areas of my programming skill.
 The exception to this is maths, While I have a good knowledge of basic algebra, 
-linear equations and other useful things I woefully lack the understanding of 
-more advanced theories.
+linear equations and other useful things I lack the understanding of more advanced theories.
 
 To attempt to remedy this I thought back to the challenges herein. Many Project
-Euler problems require an understanding or some aspects of higher math and as
+Euler problems require an understanding of some aspects of higher math and as
 such I have made it my goal to learn concepts one at a time as I complete the
 challenges.
 
-I do this because I am extremely interested in the future of cryptography but
-dont feel that I can help with the development of any future systems without
-knowing how they work.
-
 ### How Its laid out.
 
-`next.py` pull the problem text from Project Euler displaying it in the console
+`next.py` pulls the problem text from Project Euler displaying it in the console
 and creating a template file for the problem. It also downloads and data files
 associated with the problem to the data folder and adds a section to the
 template the reads the file into the DATA global variable.
@@ -39,6 +34,7 @@ template the reads the file into the DATA global variable.
 
 
 `next.py` uses BeatifulSoup4 to parse the pages. To install it run
+
     $ pip3 install beautifulsoup4
     # or
     $ apt-get install python-beatifulsoup4

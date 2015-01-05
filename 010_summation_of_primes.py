@@ -9,12 +9,12 @@ all the primes below two million.
 Answer: 142913828922
 """
 from __future__ import print_function
-from utils import timer, primes
+from utils import timer, primes, MILL
 from itertools import takewhile
 
 
 @timer
-def main(n=2000000):
+def main(n=MILL*2):
     return sum(takewhile(lambda x: x < n, primes()))
 
 

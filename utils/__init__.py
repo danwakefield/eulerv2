@@ -23,6 +23,6 @@ from .property_checks import (
     is_triangular_number
 )
 from .pythagorean_triples import pythag_triple_gen
-from .string_utils import word_score
+from .string_utils import word_score, ascii_sum
 from .timer import timer
 from .general_utils import take_n

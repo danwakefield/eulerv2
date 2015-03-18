@@ -11,3 +11,11 @@ def word_score(word):
         total += ord(letter) - 64
 
     return total
+
+
+def ascii_sum(data):
+    total = 0
+    for char in data:
+        total += ord(char)
+
+    return total

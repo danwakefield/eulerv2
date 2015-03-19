@@ -13,6 +13,16 @@ from utils import timer, primes, MILL
 from itertools import takewhile
 
 
+ANSWER = 142913828922
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main(n=MILL*2):
     return sum(takewhile(lambda x: x < n, primes()))

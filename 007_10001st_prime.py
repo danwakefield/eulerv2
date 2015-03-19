@@ -13,6 +13,16 @@ from utils import timer, primes
 from itertools import islice
 
 
+ANSWER = 104743
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main():
     return next(islice(primes(), 10000, 10001))

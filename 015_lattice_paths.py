@@ -11,7 +11,17 @@ Answer: 137846528820
 """
 from __future__ import print_function
 from utils import timer, central_binomial_coefficient
-from math import factorial
+
+
+ANSWER = 137846528820
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 # Paths through a lattice can be described using
 # 'central binomial coefficents'

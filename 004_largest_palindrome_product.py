@@ -13,6 +13,16 @@ from __future__ import print_function
 from utils import is_palindrome, timer
 
 
+ANSWER = 906609
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main():
     high = 0

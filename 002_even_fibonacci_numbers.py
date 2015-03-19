@@ -12,18 +12,23 @@ the sum of the even-valued terms.
 Answer: 4613732
 """
 from __future__ import print_function
+from utils import timer, fib, take_upto
 
 
-def fib(max, a=0, b=1):
-    x = 0
+ANSWER = 4613732
 
-    while x < max:
-        x = a + b
-        a = b
-        b = x
 
-        yield x
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
+@timer
+def main():
+    return sum(x for x in take_upto(4000000, fib()) if not x % 2)
 
 
 if __name__ == '__main__':
-    print(sum(x for x in fib(4000000) if not x % 2))
+    print(main())

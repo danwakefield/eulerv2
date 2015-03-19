@@ -23,18 +23,25 @@ have over five hundred divisors?
 Answer: 76576500
 """
 from __future__ import print_function
-from utils import timer, factors
-import itertools
+from utils import timer, factors, tri_numbers_gen
+
+
+ANSWER = 76576500
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
 
 
 @timer
 def main():
-    last = 7
-    last_total = 28
-    for i in itertools.count(last + 1):
-        last_total += i
-        if len(factors(last_total)) > 500:
-            return last_total
+    for i in tri_numbers_gen():
+        if len(factors(i)) > 500:
+            return i
+
 
 if __name__ == '__main__':
     print(main())

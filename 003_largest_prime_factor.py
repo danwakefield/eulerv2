@@ -9,11 +9,23 @@ prime factor of the number 600851475143 ?
 Answer: 6857
 """
 from __future__ import print_function
-from utils import prime_factor
+from utils import prime_factor, timer
 
 
+ANSWER = 6857
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
+@timer
 def main(number=600851475143):
     return prime_factor(number)
+
 
 if __name__ == '__main__':
     print(main())

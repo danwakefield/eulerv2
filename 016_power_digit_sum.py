@@ -9,20 +9,22 @@ What is the sum of the digits of the number 2^1000 ?
 Answer: 1366
 """
 from __future__ import print_function
-from utils import timer
+from utils import timer, composing_digits
 
-def digit_sum(n):
-    str_n = str(n)
-    total = 0
 
-    for x in str_n:
-        total += int(x)
+ANSWER = 1366
 
-    return total
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 @timer
 def main():
-    return(digit_sum(2**1000))
+    return sum(composing_digits(2**1000))
 
 
 if __name__ == '__main__':

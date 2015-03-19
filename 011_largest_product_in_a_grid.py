@@ -38,7 +38,17 @@ from __future__ import print_function
 from utils import timer
 from functools import reduce
 import copy
-import pprint
+
+
+ANSWER = 70600674
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 GRID = [x.split() for x in
      '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
@@ -70,6 +80,7 @@ TEST_GRID = [x.split() for x in
              c b a 1'''
              .split('\n')]
 
+
 def highest_horizontal_product(rows=None, run_length=4):
     if not rows:
         rows = GRID
@@ -93,7 +104,7 @@ def highest_vertical_product(rows=None):
     return highest_horizontal_product(zip(*rows))
 
 
-def get_diagonal(start=(0,0), rows=None):
+def get_diagonal(start=(0, 0), rows=None):
     '''
     Grabs the diagonal for a 2d grid.
     1 2 3 4

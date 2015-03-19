@@ -5,8 +5,8 @@ https://projecteuler.net/problem=14
 
 The following iterative sequence is defined for the set of positive
 integers:
-    n → n /2 ( n is even)
-    n → 3 n + 1 ( n is odd)
+    n → n/2 (n is even)
+    n → 3n + 1 (n is odd)
 
 Using the rule above and starting with 13, we generate the following sequence:
     13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
@@ -24,7 +24,18 @@ from __future__ import print_function
 from utils import timer
 
 
+ANSWER = 837799
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 COLLATZ_CACHE = {}
+
 
 def collatz(n, count=1):
     while n > 1:
@@ -40,6 +51,7 @@ def collatz(n, count=1):
         count += 1
 
     return count
+
 
 def cached_collatz(n):
     run_length = collatz(n)
@@ -61,6 +73,7 @@ def main():
             best_run = n
 
     return best_run
+
 
 if __name__ == '__main__':
     print(main())

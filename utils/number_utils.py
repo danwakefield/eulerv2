@@ -1,5 +1,7 @@
+from __future__ import division
 from .number_sequences import factors
 from math import log, factorial
+
 
 def _rotate_digits_closure():
     LN10 = log(10)
@@ -56,8 +58,8 @@ def central_binomial_coefficient(n):
 
 
 def prime_factor(n):
-    sqrt = int(pow(n, 0.5))
-    for x in range(1, sqrt + 1):
+    sqrt = int(n ** 0.5)
+    for x in range(2, sqrt + 1):
         while n % x == 0:
             n //= x
 

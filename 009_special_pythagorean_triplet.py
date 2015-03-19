@@ -14,6 +14,16 @@ from __future__ import print_function
 from utils import timer
 
 
+ANSWER = 31875000
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main():
     for a in range(1, 1000):
@@ -24,7 +34,8 @@ def main():
                 break
 
             if (a**2 + b**2) == c**2:
-                return a, b, c, a * b * c
+                print('a: {}, b: {}, c: {}'.format(a, b, c))
+                return a * b * c
 
 
 if __name__ == '__main__':

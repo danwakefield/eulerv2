@@ -17,9 +17,21 @@ from __future__ import print_function
 from utils import timer, factors
 from functools import lru_cache
 
+
+ANSWER = 31626
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @lru_cache(maxsize=None)
 def factor_sum(n):
     return sum(factors(n, False))
+
 
 @timer
 def main():

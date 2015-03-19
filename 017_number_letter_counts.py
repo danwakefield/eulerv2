@@ -17,6 +17,17 @@ Answer: 21124
 from __future__ import print_function
 from utils import timer
 
+
+ANSWER = 21124
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 MAPS = {
     1: len('one'),
     2: len('two'),
@@ -47,9 +58,10 @@ MAPS = {
     90: len('ninety'),
 }
 
+
 def length_of_number_as_string(n):
     if n > 1000:
-        raise NotImplemented('Only handles upto 1000')
+        raise NotImplementedError('Only handles upto 1000')
 
     # lru_cache would be a good idea here
     length = 0

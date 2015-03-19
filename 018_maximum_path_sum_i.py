@@ -37,6 +37,17 @@ Answer: 1074
 from __future__ import print_function
 from utils import timer
 
+
+ANSWER = 1074
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 TRIANGLE = [x.split() for x in
             '''
             75
@@ -64,9 +75,10 @@ TEST_TRIANGLE = [x.split() for x in
                  8 5 9 3'''
                  .split('\n')[1:]]
 
+
 def max_path_sum_in_triangle(t):
     '''
-    walks the high values up the triangle by adding the highest if the
+    walks the high values up the triangle by adding the highest of the
     two values in the cells to below_left and below_right to the current
     cell.
     I.E

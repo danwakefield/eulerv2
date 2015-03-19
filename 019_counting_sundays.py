@@ -18,8 +18,17 @@ Answer: 171
 """
 from __future__ import print_function
 from utils import timer
-import datetime
 import calendar
+
+
+ANSWER = 171
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
 
 
 @timer

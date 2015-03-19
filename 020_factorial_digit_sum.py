@@ -12,15 +12,23 @@ Find the sum of the digits in the number 100!
 Answer: 648
 """
 from __future__ import print_function
-from utils import timer
+from utils import timer, composing_digits
 from math import factorial
-power_digit_sum = __import__('016_power_digit_sum')
 
-digit_sum = power_digit_sum.digit_sum
+
+ANSWER = 648
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 @timer
 def main():
-    return digit_sum(factorial(100))
+    return sum(composing_digits(factorial(100)))
 
 
 if __name__ == '__main__':

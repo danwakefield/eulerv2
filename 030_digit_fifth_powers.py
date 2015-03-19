@@ -16,11 +16,18 @@ be written as the sum of fifth powers of their digits.
 Answer: 443839
 """
 from __future__ import print_function
-from utils import timer
+from utils import timer, composing_digits
 
 
-def composing_digits(n):
-    return tuple(int(x) for x in str(n))
+ANSWER = 443839
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 @timer
 def main():

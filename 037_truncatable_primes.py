@@ -13,8 +13,18 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 Answer: 748317
 """
 from __future__ import print_function
-from utils import timer, is_prime, primes
-import itertools
+from utils import timer, is_prime, primes, take_from
+
+
+ANSWER = 748317
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 def truncatable_prime(n):
     str_n = str(n)
@@ -32,14 +42,15 @@ def main():
     trunc_count = 11
     trunc_primes = []
 
-    for p in itertools.dropwhile(lambda x: x < 10, primes()):
+    for p in take_from(10, primes()):
         if truncatable_prime(p):
             trunc_count -= 1
             trunc_primes.append(p)
             if trunc_count == 0:
                 break
 
-    return trunc_primes, sum(trunc_primes)
+    return sum(trunc_primes)
+
 
 if __name__ == '__main__':
     print(main())

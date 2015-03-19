@@ -15,8 +15,19 @@ from utils import timer, composing_digits
 from math import factorial
 
 
+ANSWER = 40730
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 def digit_factorial_sum(n):
     return sum(factorial(x) for x in composing_digits(n))
+
 
 @timer
 def main():

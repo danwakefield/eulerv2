@@ -11,14 +11,24 @@ palindromic number, in either base, may not include leading zeros.)
 Answer: 872187
 """
 from __future__ import print_function
-from utils import timer, is_palindrome, is_binary_palindrome
+from utils import timer, is_palindrome, is_binary_palindrome, MILL
+
+
+ANSWER = 872187
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
 
 
 @timer
 def main():
     total = 0
 
-    for n in range(int(1e6)):
+    for n in range(MILL):
         if is_palindrome(n) and is_binary_palindrome(n):
             total += n
 

@@ -55,6 +55,14 @@ def fib():
         yield f
 
 
+def square_numbers_gen():
+    n = 1
+    while True:
+        x = n * n
+        yield x
+        n += 1
+
+
 def tri_numbers_gen():
     n = 1
     while True:

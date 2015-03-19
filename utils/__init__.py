@@ -7,6 +7,7 @@ from .number_sequences import (
     factors,
     fib,
     primes,
+    square_numbers_gen,
     tri_numbers_gen,
     pent_numbers_gen,
     hex_numbers_gen,
@@ -25,7 +26,6 @@ from .property_checks import (
     is_binary_palindrome,
     is_palindrome,
     is_pandigital,
-    is_pentagonal_number,
     is_perfect_square,
     is_permutation,
     is_permutation_str,
@@ -39,4 +39,9 @@ from .property_checks import (
 from .pythagorean_triples import pythag_triple_gen
 from .string_utils import word_score, ascii_sum
 from .timer import timer
-from .general_utils import take_n
+from .general_utils import (
+    take_n,
+    take_between,
+    take_upto,
+    take_from,
+)

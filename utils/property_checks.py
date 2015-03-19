@@ -2,6 +2,7 @@
 import math
 
 
+_PANDIGITAL_PATTERN = ('1', '2', '3', '4', '5', '6', '7', '8', '9')
 _SQUARE_BIT_PATTERNS = frozenset((0x00, 0x01, 0x04, 0x09, 0x10, 0x11,
                                   0x19, 0x21, 0x24, 0x29, 0x31, 0x39))
 
@@ -75,29 +76,23 @@ def is_binary_palindrome(n):
     return str_n == str_n[::-1]
 
 
-def _is_pandigital_closure():
-    PANDIGITAL = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+def is_pandigital(s, n):
+    """
+    Return False or None if not a palindrome true otherwise.
 
-    def is_pandigital(s, n):
-        """
-        Return False or None if not a palindrome true otherwise.
+    None is returned if the number given has more digits than N.
+    This allows anyone incrementing a counter to check that s will now
+    never match and allow a loop break while still maintaining a false
+    boolness if this isnt needed.
+    """
+    len_s = len(s)
+    if len_s > n:
+        return None
+    elif len_s != n:
+        return False
 
-        None is returned if the number given has more digits than N.
-        This allows anyone incrementing a counter to check that s will now
-        never match and allow a loop break while still maintaining a false
-        boolness if this isnt needed.
-        """
-        len_s = len(s)
-        if len_s > n:
-            return None
-        elif len_s != n:
+    for p in _PANDIGITAL_PATTERN[:n]:
+        if p not in s:
             return False
 
-        for p in PANDIGITAL[:n]:
-            if p not in s:
-                return False
-
-        return True
-    return is_pandigital
-
-is_pandigital = _is_pandigital_closure()
+    return True

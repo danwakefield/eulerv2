@@ -53,3 +53,43 @@ def fib():
         a = b
         b = f
         yield f
+
+
+def tri_numbers_gen():
+    n = 1
+    while True:
+        x = (n * (n + 1)) / 2
+        yield int(x)
+        n += 1
+
+
+def pent_numbers_gen():
+    n = 1
+    while True:
+        x = ((3 * n**2) - n) / 2
+        yield int(x)
+        n += 1
+
+
+def hex_numbers_gen():
+    n = 1
+    while True:
+        x = (2 * n**2) - n
+        yield int(x)
+        n += 1
+
+
+def hept_numbers_gen():
+    n = 1
+    while True:
+        x = ((5 * n**2) - (3 * n)) / 2
+        yield int(x)
+        n += 1
+
+
+def oct_numbers_gen():
+    n = 1
+    while True:
+        x = (3 * n**2) - (2 * n)
+        yield int(x)
+        n += 1

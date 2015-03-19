@@ -39,6 +39,21 @@ def is_pentagonal_number(n):
     return x == int(x)
 
 
+def is_hexagonal_number(n):
+    x = (((8*n + 1) ** 0.5) + 1) / 4
+    return x == int(x)
+
+
+def is_heptagonal_number(n):
+    x = (((40*n + 9) ** 0.5) + 3) / 10
+    return x == int(x)
+
+
+def is_octagonal_number(n):
+    x = (((3*n + 1) ** 0.5) + 1) / 3
+    return x == int(x)
+
+
 def is_prime(n):
     if n <= 3:
         return n >= 2

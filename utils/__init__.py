@@ -2,7 +2,17 @@
 # encoding: utf-8
 
 from .constants import BILL, HMILL, HTHOU, MILL, THOU, TMILL, TTHOU
-from .number_sequences import factor_pairs, factors, fib, primes
+from .number_sequences import (
+    factor_pairs,
+    factors,
+    fib,
+    primes,
+    tri_numbers_gen,
+    pent_numbers_gen,
+    hex_numbers_gen,
+    hept_numbers_gen,
+    oct_numbers_gen,
+)
 from .number_utils import (
     central_binomial_coefficient,
     composing_digits,
@@ -20,7 +30,11 @@ from .property_checks import (
     is_permutation,
     is_permutation_str,
     is_prime,
-    is_triangular_number
+    is_triangular_number,
+    is_pentagonal_number,
+    is_hexagonal_number,
+    is_heptagonal_number,
+    is_octagonal_number,
 )
 from .pythagorean_triples import pythag_triple_gen
 from .string_utils import word_score, ascii_sum

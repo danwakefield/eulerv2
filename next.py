@@ -18,11 +18,20 @@ TEMPLATE = (
 https://projecteuler.net/problem=$number
 
 $text
-
-Answer:
 """
 from __future__ import print_function
 from utils import timer
+
+
+ANSWER = None
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 $resource
 
 @timer
@@ -83,7 +92,6 @@ def get(num, overwrite):
                     .replace(' ', '_')
                     .replace('-', '_'))
 
-
     print(num)
     print(problem_name, end='\n\n')
     print(problem_text)
@@ -94,8 +102,9 @@ def get(num, overwrite):
                   requests.get(resource_file).content,
                   executable=False)
 
-        resource = ("\nwith open('{0}', 'r') as f:\n    DATA = f.readlines()"
-                    "".format(resource_file_name))
+        resource = ("\nwith open('{0}', 'r') as f:\n    DATA = f.readlines()\n\n"
+                    ''.format(resource_file_name))
+
     else:
         resource = ''
 
@@ -126,4 +135,3 @@ def make_file(fn, cont, executable=True):
 
 if __name__ == '__main__':
     main()
-

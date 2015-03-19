@@ -17,6 +17,17 @@ Answer: 871198282
 from __future__ import print_function
 from utils import timer, word_score
 
+
+ANSWER = 871198282
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 with open('./data/022_names_scores.txt', 'r') as f:
     DATA = f.readlines()
     DATA = DATA[0].replace('"', '').split(',')

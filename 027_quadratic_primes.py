@@ -35,10 +35,20 @@ from utils import timer, primes, is_prime
 from itertools import takewhile
 
 
+ANSWER = -59231
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main():
     primes_less_1000 = list(takewhile(lambda x: x < 1000, primes()))
-    highest = [0,0,0]
+    highest = [0, 0, 0]
 
     for a in range(-999, 1001):
         for b in primes_less_1000:
@@ -51,7 +61,8 @@ def main():
                 highest[1] = a
                 highest[2] = b
 
-    return highest, (highest[1] * highest[2])
+    print(highest)
+    return highest[1] * highest[2]
 
 
 if __name__ == '__main__':

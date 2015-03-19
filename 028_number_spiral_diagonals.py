@@ -20,6 +20,17 @@ Answer: 669171001
 from __future__ import print_function
 from utils import timer
 
+
+ANSWER = 669171001
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 def square(n):
     '''
     turns the above square into the list
@@ -47,7 +58,6 @@ def square(n):
 @timer
 def main():
     return square(1001)
-    pass
 
 
 if __name__ == '__main__':

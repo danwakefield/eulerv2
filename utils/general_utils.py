@@ -8,6 +8,13 @@ def take_n(n, gen):
         yield y
 
 
+def drop_n(n, gen):
+    for _ in range(n):
+        next(gen)
+    for y in gen:
+        yield y
+
+
 def take_between(low, high, gen):
     for y in take_upto(high, take_from(low, gen)):
         yield y

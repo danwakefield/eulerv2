@@ -25,7 +25,18 @@ from itertools import permutations
 from functools import reduce
 
 
+ANSWER = 16695334890
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 PRIMES = (2, 3, 5, 7, 11, 13, 17)
+
 
 @timer
 def main():

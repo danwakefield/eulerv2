@@ -65,5 +65,3 @@ def prime_factor(n):
 
             if n == 1 or n == x:
                 return x
-
-

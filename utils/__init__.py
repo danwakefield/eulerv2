@@ -40,6 +40,7 @@ from .pythagorean_triples import pythag_triple_gen
 from .string_utils import word_score, ascii_sum
 from .timer import timer
 from .general_utils import (
+    drop_n,
     take_n,
     take_between,
     take_upto,

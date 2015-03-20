@@ -16,8 +16,20 @@ from __future__ import print_function
 from utils import timer, primes
 import itertools
 
+
+ANSWER = 65537
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 primes_l = set(itertools.islice(primes(), 10000))
 square_sums = [2*(x**2) for x in range(40)]
+
 
 @timer
 def main():

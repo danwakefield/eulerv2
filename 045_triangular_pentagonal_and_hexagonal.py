@@ -15,7 +15,17 @@ pentagonal and hexagonal.
 Answer: 1533776805
 """
 from __future__ import print_function
-from utils import timer, is_pentagonal_number
+from utils import timer, is_pentagonal_number, drop_n, hex_numbers_gen
+
+
+ANSWER = 1533776805
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
 
 
 def hexagonal_gen(start=1):
@@ -27,7 +37,10 @@ def hexagonal_gen(start=1):
 
 @timer
 def main():
-    for h in hexagonal_gen(144):
+    # All hexagonal numbers are also triangular so we dont need to check them
+    # if we use them as a base.
+    # Start from 144 as we are asked for the next one.
+    for h in drop_n(144, hex_numbers_gen()):
         if is_pentagonal_number(h):
             return h
 

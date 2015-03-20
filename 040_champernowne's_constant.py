@@ -16,7 +16,16 @@ from __future__ import print_function
 from utils import timer, digit_length, composing_digits
 import itertools
 import functools
-import operator
+
+
+ANSWER = 210
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
 
 
 @timer

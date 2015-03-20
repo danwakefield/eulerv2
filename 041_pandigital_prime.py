@@ -15,6 +15,16 @@ from utils import timer, is_prime
 from itertools import permutations
 
 
+ANSWER = 7652413
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @timer
 def main():
     # A prime n > 10 must end in one of these numbers.
@@ -43,8 +53,7 @@ def main():
                     # permutations first.
                     if i > highest_prime:
                         highest_prime = i
-        # If a prime has been discovered this iteration of x highest
-        # prime will not be 0 so return it.
+
         if highest_prime != 0:
             return highest_prime
 

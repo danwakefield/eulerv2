@@ -21,6 +21,16 @@ from __future__ import print_function
 from utils import timer, word_score, is_triangular_number
 
 
+ANSWER = 162
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 with open('./data/042_coded_triangle_numbers.txt', 'r') as f:
     DATA = f.readlines()
     DATA = DATA[0].replace('"', '').split(',')

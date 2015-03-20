@@ -24,6 +24,16 @@ from utils import timer, composing_digits
 from fractions import Fraction
 
 
+ANSWER = 153
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 def mixed_num_to_improper_frac(x, frac):
     n = frac.numerator + x * frac.denominator
     return Fraction(n, frac.denominator)

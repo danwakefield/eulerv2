@@ -46,6 +46,17 @@ from __future__ import print_function
 from utils import timer
 from collections import Counter
 
+
+ANSWER = 376
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 _MAP_VALUES = 'TJQKA'
 
 
@@ -174,7 +185,6 @@ def main():
             print(hv_a)
 
         print("===== {0} =====".format(i+1))
-
 
     return player_1_wins
 

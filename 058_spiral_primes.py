@@ -29,6 +29,16 @@ from fractions import Fraction
 from itertools import takewhile
 
 
+ANSWER = 26241
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 def percentage(a, b):
     return int((float(a) / b) * 100)
 

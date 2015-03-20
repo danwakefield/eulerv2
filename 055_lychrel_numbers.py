@@ -34,6 +34,16 @@ from utils import timer, is_palindrome, TTHOU
 from functools import lru_cache
 
 
+ANSWER = 249
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
+
 @lru_cache(maxsize=None)
 def is_lychrel(n, iterations=51):
     if iterations == 0:

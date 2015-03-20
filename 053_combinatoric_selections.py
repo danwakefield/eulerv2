@@ -14,12 +14,20 @@ are greater than one-million?
 Answer: 4075
 """
 from __future__ import print_function
-from utils import timer
+from utils import timer, MILL
 from math import factorial
 from functools import lru_cache
 
 
-mil = int(1e6)
+ANSWER = 4075
+
+
+def test_answer():
+    if ANSWER is None:
+        assert 0, 'Not Completed'
+    else:
+        assert ANSWER == main()
+
 
 @lru_cache(maxsize=110)
 def cached_fact(n):
@@ -31,7 +39,7 @@ def main():
     total = 0
     for n in range(0, 101):
         for r in range(1, n+1):
-            if (cached_fact(n) / (cached_fact(r) * cached_fact(n-r))) >= mil:
+            if (cached_fact(n) / (cached_fact(r) * cached_fact(n-r))) >= MILL:
                 total += 1
 
     return total

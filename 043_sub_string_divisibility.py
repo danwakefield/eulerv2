@@ -35,7 +35,7 @@ def test_answer():
         assert ANSWER == main()
 
 
-PRIMES = (2, 3, 5, 7, 11, 13, 17)
+PRIMES = (17, 13, 11, 7, 5, 3, 2)
 
 
 @timer
@@ -45,9 +45,13 @@ def main():
     for n in permutations('0123456789', 10):
         if n[0] == '0':
             continue
+        if n[5] != '0' and n[5] != '5':
+            continue
         n = ''.join(n)
+
         for i, p in enumerate(PRIMES):
-            if int(n[i+1:i+4]) % p:
+            s = n[10-i-3:10-i]
+            if int(s) % p:
                 break
         else:
             matching.add(n)

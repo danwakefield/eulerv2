@@ -1,5 +1,5 @@
 from __future__ import division
-from .number_sequences import factors
+from .number_sequences import factors, _factor_pairs_v2
 from math import log, factorial
 
 
@@ -48,8 +48,13 @@ def composing_digits(n):
     return tuple(int(x) for x in str(n))
 
 
-def factor_sum(n, include_n=False):
-    return sum(factors(n, include_n))
+def factor_sum(n):
+    d = {}
+    for f in _factor_pairs_v2(n):
+        d[f] = True
+
+    del d[n]
+    return sum(d.keys())
 
 
 def central_binomial_coefficient(n):

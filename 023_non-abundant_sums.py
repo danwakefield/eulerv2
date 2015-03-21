@@ -36,26 +36,23 @@ def test_answer():
 
 @timer
 def main():
-    total = 0
+    x_set = set(range(1, 28123))
     abundant = set()
 
-    for n in range(12, 28123):
+    for n in x_set:
         if factor_sum(n) > n:
             abundant.add(n)
 
-    abundant_sums = set()
-    for n in abundant:
-        for k in abundant:
+    abundant = list(abundant)
+    abundant_sums = {}
+    for i, n in enumerate(abundant):
+        for k in abundant[i:]:
             s = k + n
             if s > 28123:
                 break
-            abundant_sums.add(s)
+            abundant_sums[s] = True
 
-    for n in range(1, 28123):
-        if n not in abundant_sums:
-            total += n
-
-    return total
+    return sum(x_set - abundant_sums.keys())
 
 
 if __name__ == '__main__':

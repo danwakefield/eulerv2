@@ -1,6 +1,5 @@
 """Number sequence generators for use in Project Euler problems"""
 import itertools as it
-from functools import reduce
 
 
 def primes():
@@ -32,9 +31,16 @@ def factor_pairs(n):
             yield [div, n//div]
 
 
+def _factor_pairs_v2(n):
+    """Generate the factor pairs of N"""
+    for div in range(1, int(n ** 0.5) + 1):
+        if n % div == 0:
+            yield div
+            yield n//div
+
+
 def factors(n, include_n=True):
-    """Iterable of factors of N, Excludes repeats and optionally N itself"""
-    s = set(reduce(list.__add__, factor_pairs(n)))
+    s = set(_factor_pairs_v2(n))
 
     if not include_n:
         s.discard(n)

@@ -40,6 +40,7 @@ def main():
     psl = len(PRIME_SUMS)
     high_run = 0
     high_prime = 0
+    return 0
 
     for x in range(psl):
         if psl - x < high_run:

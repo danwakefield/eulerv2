@@ -50,13 +50,13 @@ def main():
         n = ''.join(n)
 
         for i, p in enumerate(PRIMES):
-            s = n[10-i-3:10-i]
+            s = n[7-i:10-i]
             if int(s) % p:
                 break
         else:
-            matching.add(n)
+            matching.add(int(n))
 
-    return reduce(lambda x, y: x+int(y), matching, 0)
+    return sum(matching)
 
 
 if __name__ == '__main__':

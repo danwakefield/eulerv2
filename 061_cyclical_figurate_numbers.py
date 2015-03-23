@@ -18,7 +18,6 @@ following formulae:
         1, 7, 18, 34, 55, ...
     Octagonal P_8,n = n(3n−2)
         1, 8, 21, 40, 65, ...
-
 The ordered set of three 4-digit numbers:
     8128, 2882, 8281,
 has three interesting properties.
@@ -59,17 +58,62 @@ def test_answer():
         assert ANSWER == main()
 
 
-SQUARES = set(take_between(1010, 9999, square_numbers_gen()))
-TRIS = set(take_between(1010, 9999, tri_numbers_gen()))
-PENTS = set(take_between(1010, 9999, pent_numbers_gen()))
-HEXS = set(take_between(1010, 9999, hex_numbers_gen()))
-HEPTS = set(take_between(1010, 9999, hept_numbers_gen()))
-OCTS = set(take_between(1010, 9999, oct_numbers_gen()))
+def make_cyclic_map(gen):
+    """
+    Create maps with the k = the first two digits of the number and values
+    a set of two digits suffixes. E.g
 
+    2435 => {
+        (2, 4): {(3, 5),}
+    }
+    """
+    d = {}
+    for x in gen:
+        s = composing_digits(x)
+        pre = s[:2]
+        suf = s[2:]
+        if pre in d:
+            d[pre].add(suf)
+        else:
+            # Add the tuple as an item not individual numbers
+            d[pre] = set((suf,))
+
+    # Remove all items from d with only (0, 0) suffixes. These are all dead
+    # paths and we dont want to check for them.
+    # Copy needed otherwise you get nasty errors from editing the structure
+    # being looped over.
+    copy_d = d.copy()
+    for k, v in copy_d.items():
+        if all(x == (0, 0) for x in v):
+            del d[k]
+
+    return d
+
+
+SQUARES = make_cyclic_map(take_between(1010, 9999, square_numbers_gen()))
+TRIS = make_cyclic_map(take_between(1010, 9999, tri_numbers_gen()))
+PENTS = make_cyclic_map(take_between(1010, 9999, pent_numbers_gen()))
+HEXS = make_cyclic_map(take_between(1010, 9999, hex_numbers_gen()))
+HEPTS = make_cyclic_map(take_between(1010, 9999, hept_numbers_gen()))
+OCTS = make_cyclic_map(take_between(1010, 9999, oct_numbers_gen()))
+
+ORDER = [HEPTS, HEXS, PENTS, TRIS, SQUARES]
 
 @timer
 def main():
-    print(TRIS)
+    for p, s in OCTS.items():
+        for g in ORDER:
+            if p in g:
+                recurse(p, g, ORDER)
+
+
+def recurse(k, d, l):
+    l = l.copy()
+    l.remove(d)
+    for v in d[k]:
+        for g in l:
+            if v in g:
+                return [k+v].extend(recurse(v, g, l))
 
 
 if __name__ == '__main__':

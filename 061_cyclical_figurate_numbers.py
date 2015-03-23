@@ -90,6 +90,16 @@ def make_cyclic_map(gen):
     return d
 
 
+BLAH = {
+    'squares': make_cyclic_map(take_between(1010, 9999, square_numbers_gen())),
+    'tris': make_cyclic_map(take_between(1010, 9999, tri_numbers_gen())),
+    'pents': make_cyclic_map(take_between(1010, 9999, pent_numbers_gen())),
+    'hexs': make_cyclic_map(take_between(1010, 9999, hex_numbers_gen())),
+    'hepts': make_cyclic_map(take_between(1010, 9999, hept_numbers_gen())),
+    'octs': make_cyclic_map(take_between(1010, 9999, oct_numbers_gen())),
+}
+
+
 SQUARES = make_cyclic_map(take_between(1010, 9999, square_numbers_gen()))
 TRIS = make_cyclic_map(take_between(1010, 9999, tri_numbers_gen()))
 PENTS = make_cyclic_map(take_between(1010, 9999, pent_numbers_gen()))
@@ -101,19 +111,53 @@ ORDER = [HEPTS, HEXS, PENTS, TRIS, SQUARES]
 
 @timer
 def main():
-    for p, s in OCTS.items():
-        for g in ORDER:
-            if p in g:
-                recurse(p, g, ORDER)
+    for k, v in BLAH['squares'].items():
+        for x in v:
+
+            used = {'squares': k+x}
+            bar = foo(used, x)
+
+            try:
+                if len(bar) == 6:
+                    import pprint; pprint.pprint(bar)
+                    total = 0
+                    for k, v in bar.items():
+                        total += int(''.join(map(str, v)))
+                    return total
+            except Exception:
+                pass
 
 
-def recurse(k, d, l):
-    l = l.copy()
-    l.remove(d)
-    for v in d[k]:
-        for g in l:
-            if v in g:
-                return [k+v].extend(recurse(v, g, l))
+def check(d):
+    if len(set(d.values())) != 6:
+        return False
+
+    l = d.values()
+    for x in l:
+        for y in l:
+            if y[:2] == x[2:]:
+                break
+        else:
+            return False
+
+    return True
+
+
+def foo(used, k):
+    for d in BLAH:
+        if d in used:
+            continue
+        elif k not in BLAH[d]:
+            continue
+        else:
+            for v in BLAH[d][k]:
+                used[d] = k+v
+                foo(used, v)
+                try:
+                    if check(used):
+                        return used
+                except Exception:
+                    pass
 
 
 if __name__ == '__main__':

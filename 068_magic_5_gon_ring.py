@@ -36,7 +36,7 @@ from utils import timer
 from itertools import permutations
 
 
-ANSWER = None
+ANSWER = 6531031914842725
 
 
 def test_answer():
@@ -106,6 +106,7 @@ def main():
         if s > result:
             print(s)
             result = s
+
     return result
 
 if __name__ == '__main__':

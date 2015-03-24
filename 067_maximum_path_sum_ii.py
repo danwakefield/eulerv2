@@ -20,7 +20,7 @@ from __future__ import print_function
 from utils import timer
 
 
-ANSWER = None
+ANSWER = 7273
 
 
 def test_answer():

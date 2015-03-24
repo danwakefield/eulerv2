@@ -48,7 +48,7 @@ from utils import (
     composing_digits,
 )
 
-ANSWER = None
+ANSWER = 28684
 
 
 def test_answer():
@@ -100,15 +100,6 @@ BLAH = {
 }
 
 
-SQUARES = make_cyclic_map(take_between(1010, 9999, square_numbers_gen()))
-TRIS = make_cyclic_map(take_between(1010, 9999, tri_numbers_gen()))
-PENTS = make_cyclic_map(take_between(1010, 9999, pent_numbers_gen()))
-HEXS = make_cyclic_map(take_between(1010, 9999, hex_numbers_gen()))
-HEPTS = make_cyclic_map(take_between(1010, 9999, hept_numbers_gen()))
-OCTS = make_cyclic_map(take_between(1010, 9999, oct_numbers_gen()))
-
-ORDER = [HEPTS, HEXS, PENTS, TRIS, SQUARES]
-
 @timer
 def main():
     for k, v in BLAH['squares'].items():
@@ -119,7 +110,6 @@ def main():
 
             try:
                 if len(bar) == 6:
-                    import pprint; pprint.pprint(bar)
                     total = 0
                     for k, v in bar.items():
                         total += int(''.join(map(str, v)))
@@ -129,13 +119,20 @@ def main():
 
 
 def check(d):
+    """
+    Checks a dict has cyclic values
+    """
     if len(set(d.values())) != 6:
         return False
 
-    l = d.values()
-    for x in l:
-        for y in l:
+    # Need seperate copys of the list as we need to remove items
+    # as we loop over them.
+    l = list(d.values())
+    l2 = list(d.values())
+    for i, x in enumerate(l):
+        for y in l2:
             if y[:2] == x[2:]:
+                l2.remove(y)
                 break
         else:
             return False
@@ -144,6 +141,12 @@ def check(d):
 
 
 def foo(used, k):
+    """
+    recursive function to find cyclic candidates.
+
+    :used: Dict
+    :k: 2 item tuple
+    """
     for d in BLAH:
         if d in used:
             continue
@@ -156,6 +159,8 @@ def foo(used, k):
                 try:
                     if check(used):
                         return used
+                    else:
+                        del used[d]
                 except Exception:
                     pass
 

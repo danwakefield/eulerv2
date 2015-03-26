@@ -20,7 +20,8 @@ from .number_utils import (
     digit_length,
     factor_sum,
     prime_factor,
-    rotate_digits
+    rotate_digits,
+    ways
 )
 from .property_checks import (
     is_binary_palindrome,

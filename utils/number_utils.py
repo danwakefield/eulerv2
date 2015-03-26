@@ -70,3 +70,13 @@ def prime_factor(n):
 
             if n == 1 or n == x:
                 return x
+
+
+def ways(cands, target):
+    w = [1] + [0] * target
+
+    for c in cands:
+        for i in range(c, target+1):
+            w[i] += w[i-c]
+
+    return w[-1]

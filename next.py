@@ -86,7 +86,9 @@ def get(num, overwrite):
 
     problem_text = '\n'.join(textwrap.wrap('\n'.join(problem_text)))
     problem_text = problem_text.replace(' ^', '^')
+    problem_text = problem_text.replace('^ ', '^')
     problem_text = problem_text.replace(' _', '_')
+    problem_text = problem_text.replace('_ ', '_')
     problem_name = (c.find_all('h2')[0].string
                     .lower()
                     .replace(' ', '_')

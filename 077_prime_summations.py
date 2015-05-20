@@ -17,7 +17,7 @@ from __future__ import print_function
 from utils import timer, ways, take_upto, primes
 
 
-ANSWER = None
+ANSWER = 71
 
 
 def test_answer():

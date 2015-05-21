@@ -40,20 +40,20 @@ def main():
     # but it doesnt.
     # The idea is that for a passcode, ABC
     # B adds A to it before set and C add A and B to its set.
-    # At the eand we would see that A never appeared after anything
+    # At the end we would see that A never appeared after anything
     # so must be the first character. B only appeared after A and
     # so forth
-    for x in DATA:
-        char = x[0]
+    for code in DATA:
+        char = code[0]
         if char not in digits:
             digits[char] = set()
 
-        char = x[1]
+        char = code[1]
         if char not in digits:
             digits[char] = set()
         digits[char].add(x[0])
 
-        char = x[2]
+        char = code[2]
         if char not in digits:
             digits[char] = set()
         digits[char].add(x[0])

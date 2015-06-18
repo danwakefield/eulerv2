@@ -9,7 +9,7 @@ see that the 6th prime is 13. What is the 10 001st prime number?
 Answer: 104743
 """
 from __future__ import print_function
-from utils import timer, primes
+from utils import timer, primes, drop_n
 from itertools import islice
 
 
@@ -25,7 +25,7 @@ def test_answer():
 
 @timer
 def main():
-    return next(islice(primes(), 10000, 10001))
+    return next(drop_n(10000, primes()))
 
 
 if __name__ == '__main__':

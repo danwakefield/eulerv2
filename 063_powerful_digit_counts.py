@@ -12,7 +12,7 @@ from __future__ import print_function
 from utils import timer, digit_length
 
 
-ANSWER = None
+ANSWER = 49
 
 
 def test_answer():
@@ -24,7 +24,17 @@ def test_answer():
 
 @timer
 def main():
-    pass
+    total = 0
+
+    for p in range(1, 400):
+        for i in range(1, 1000):
+            x = len(str(i ** p))
+            if x == p:
+                total += 1
+            if x > p:
+                break
+
+    return total
 
 
 if __name__ == '__main__':

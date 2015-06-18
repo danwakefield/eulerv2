@@ -39,6 +39,7 @@ def sum_squares(n):
 
     4 * 4 = 16
     5 * 5 = 25  ==  4 + 5 + 16
+    6 * 6 = 36  ==  6 + 5 + 25
 
     Hard code the first few squares which dont share this behaviour
 

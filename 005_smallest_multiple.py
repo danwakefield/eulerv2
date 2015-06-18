@@ -25,9 +25,15 @@ def test_answer():
 
 @timer
 def main():
+    divisors = tuple(range(11, 21))
 
+    # Incrementing 2520 means we exclude any candidates
+    # that are divisable by 1-10 reducing the work we have to do.
     for x in range(2520, 99999999999, 2520):
-        if all(x % d == 0 for d in range(11, 21)):
+        for d in divisors:
+            if x % d != 0:
+                break
+        else:
             return x
 
 

@@ -10,9 +10,10 @@ number of solutions maximised?
 """
 from __future__ import print_function
 from utils import timer
+from collections import defaultdict
 
 
-ANSWER = None
+ANSWER = 840
 
 
 def test_answer():
@@ -22,11 +23,26 @@ def test_answer():
         assert ANSWER == main()
 
 
-
 @timer
 def main():
-    pass
+    solutions = defaultdict(lambda: 0)
+    for a in range(3, 1000):
+        for b in range(3, 1000):
+            c = ((a*a)+(b*b))**0.5
+            p = c + b + a
+            if p > 1000:
+                break
 
+            solutions[p] += 1
+
+    most = 0
+    most_key = 0
+    for k, v in solutions.items():
+        if v > most:
+            most = v
+            most_key = k
+
+    return int(most_key)
 
 if __name__ == '__main__':
     print(main())

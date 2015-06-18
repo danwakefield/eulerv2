@@ -28,7 +28,7 @@ def test_answer():
 @timer
 def main():
     # A prime n > 10 must end in one of these numbers.
-    possible_prime_suffix = set(('1', '3', '7', '9'))
+    possible_prime_suffix = frozenset(('1', '3', '7', '9'))
     highest_prime = 0
 
     # Progressivly create a smaller string of candidate numbers by

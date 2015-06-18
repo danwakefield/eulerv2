@@ -28,18 +28,11 @@ def test_answer():
         assert ANSWER == main()
 
 
-def hexagonal_gen(start=1):
-    count = start
-    while True:
-        yield count * (2*count - 1)
-        count += 1
-
-
 @timer
 def main():
     # All hexagonal numbers are also triangular so we dont need to check them
     # if we use them as a base.
-    # Start from 144 as we are asked for the next one.
+    # Start from H_144 as we are asked for the next one.
     for h in drop_n(144, hex_numbers_gen()):
         if is_pentagonal_number(h):
             return h

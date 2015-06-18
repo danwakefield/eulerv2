@@ -28,7 +28,8 @@ def test_answer():
         assert ANSWER == main()
 
 
-PRIMES = list(take_n(1000, primes()))
+PRIMES = list(take_n(10000, primes()))
+PRIMES_SET = frozenset(PRIMES)
 
 
 @timer

@@ -49,12 +49,32 @@ def main():
             continue
         n = ''.join(n)
 
-        for i, p in enumerate(PRIMES):
-            s = n[7-i:10-i]
-            if int(s) % p:
-                break
-        else:
-            matching.add(int(n))
+        # We unroll the loop for a little extra speed.
+        # for i, p in enumerate(PRIMES):
+        #     s = n[7-i:10-i]
+        #     if int(s) % p:
+        #         break
+        #
+        # We order the primes in reverse since there are less candidates that
+        # are divisable by each of the higher numbers. Doing it this way
+        # filters them early for a nice speed boost
+        if int(n[7:10]) % 17:
+            continue
+        if int(n[6:9]) % 13:
+            continue
+        if int(n[5:8]) % 11:
+            continue
+        if int(n[4:7]) % 7:
+            continue
+        # We have already checked for this above before converting to a string
+        # if int(n[3:6]) % 5:
+        #     continue
+        if int(n[2:5]) % 3:
+            continue
+        if int(n[1:4]) % 2:
+            continue
+
+        matching.add(int(n))
 
     return sum(matching)
 

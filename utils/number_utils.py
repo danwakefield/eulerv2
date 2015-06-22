@@ -48,6 +48,26 @@ def composing_digits(n):
     return tuple(int(x) for x in str(n))
 
 
+def gcd(a, b):
+    while a != b:
+        if a > b:
+            a -= b
+        else:
+            b -= a
+    return a
+
+
+def gcd_multiple(*a):
+    a = list(a)
+
+    while len(a) > 1:
+        x = a.pop()
+        y = a.pop()
+        g = gcd(x, y)
+        a.append(g)
+    return a[0]
+
+
 def factor_sum(n):
     d = {}
     for f in _factor_pairs_v2(n):

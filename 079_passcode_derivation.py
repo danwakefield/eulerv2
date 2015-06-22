@@ -51,13 +51,13 @@ def main():
         char = code[1]
         if char not in digits:
             digits[char] = set()
-        digits[char].add(x[0])
+        digits[char].add(code[0])
 
         char = code[2]
         if char not in digits:
             digits[char] = set()
-        digits[char].add(x[0])
-        digits[char].add(x[1])
+        digits[char].add(code[0])
+        digits[char].add(code[1])
 
     passcode = [None] * len(digits)
     for k, v in digits.items():

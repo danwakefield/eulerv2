@@ -23,10 +23,31 @@ def test_answer():
         assert ANSWER == main()
 
 
+def composing_digits_key(n):
+    # We want an iummutable key for each number. If it is a permuation
+    # then a sorted tuple of the digits will match.
+    return tuple(sorted(x for x in str(n)))
+
+
+def cubes_gen():
+    x = 345
+    while True:
+        yield x**3
+        x += 1
+
 
 @timer
 def main():
-    pass
+    d = {}
+
+    for c in cubes_gen():
+        k = composing_digits_key(c)
+        if k not in d:
+            d[k] = []
+
+        d[k].append(c)
+        if len(d[k]) == 5:
+            return min(d[k])
 
 
 if __name__ == '__main__':

@@ -44,7 +44,6 @@ def main():
 
     for x in range(psl):
         if psl - x < high_run:
-            print('break AAAA')
             break
 
         for y in range(psl - 1, x, -1):
@@ -54,16 +53,13 @@ def main():
 
             run_length = abs(x - y)
             if run_length < high_run:
-                print('break BBBB')
                 break
 
             if diff < high_prime:
-                print('break CCCC')
                 break
 
             if diff in PRIME_SET:
                 if diff > high_prime:
-                    print('high_run:{} high_prime:{}'.format(run_length, diff))
                     high_prime = diff
                     high_run = run_length
 

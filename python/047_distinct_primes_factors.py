@@ -29,7 +29,6 @@ def test_answer():
         assert ANSWER == main()
 
 
-
 @timer
 def main():
     pass

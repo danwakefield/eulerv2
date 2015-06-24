@@ -60,3 +60,11 @@ func TakeUpto(high int, in <-chan int) chan int {
 func TakeBetween(low, high int, in chan int) chan int {
 	return TakeUpto(high, TakeFrom(low, in))
 }
+
+func ChanLen(in <-chan int) int {
+	l := 0
+	for _ = range in {
+		l++
+	}
+	return l
+}

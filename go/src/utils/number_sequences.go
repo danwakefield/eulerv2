@@ -30,9 +30,7 @@ func PrimeGenerator() <-chan int {
 func FibonnaciGenerator() <-chan int {
 	ch := make(chan int)
 	go func() {
-		a := 1
-		b := 1
-
+		a, b := 1, 1
 		ch <- 1
 		ch <- 1
 
@@ -44,6 +42,27 @@ func FibonnaciGenerator() <-chan int {
 		}
 	}()
 	return ch
+}
+
+func FactorGenerator(n int) <-chan int {
+	out := make(chan int)
+	go func() {
+		defer close(out)
+		for i := 1; i < SqrtInt(n)+1; i++ {
+			if ModInt(n, i) == 0 {
+				out <- i
+				out <- n / i
+			}
+		}
+	}()
+	return out
+}
+
+func FactorSet(n int) (out map[int]bool) {
+	for f := range FactorGenerator(n) {
+		out[f] = true
+	}
+	return out
 }
 
 func MakeNumberSequence(next func(n int) int) chan int {

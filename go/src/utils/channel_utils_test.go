@@ -55,3 +55,14 @@ func TestTakeUpto(t *testing.T) {
 		}
 	}
 }
+
+func TestChanLen(t *testing.T) {
+	N := 10
+	sqChan := SquareNumberGenerator()
+	limitedChan := TakeN(N, sqChan)
+	l := ChanLen(limitedChan)
+
+	if N != l {
+		t.Errorf("ChanLen should be %d, got %d", N, l)
+	}
+}

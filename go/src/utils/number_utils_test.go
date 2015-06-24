@@ -67,3 +67,42 @@ func TestComposingDigits(t *testing.T) {
 		}
 	}
 }
+
+func TestSwingFactorial(t *testing.T) {
+	tests := map[uint]uint64{
+		1:  1,
+		2:  2,
+		3:  6,
+		4:  24,
+		10: 3628800,
+		20: 2432902008176640000,
+	}
+
+	bigTests := map[uint]string{
+		25: "15511210043330985984000000",
+		30: "265252859812191058636308480000000",
+	}
+
+	for k, v := range tests {
+		b := SwingFactorial(k)
+		r := b.Uint64()
+		if v != r {
+			t.Errorf("Factorial(%d) should be %d, got %d", k, v, r)
+		}
+	}
+
+	for k, v := range bigTests {
+		b := SwingFactorial(k)
+		r := b.String()
+		if v != r {
+			t.Errorf("Factorial(%d) should be %s, got %s", k, v, r)
+		}
+	}
+}
+
+func BenchmarkSwingFactorial(b *testing.B) {
+	l := uint(Thou)
+	for i := 0; i < b.N; i++ {
+		_ = SwingFactorial(l)
+	}
+}

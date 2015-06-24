@@ -35,8 +35,7 @@ func Main() int {
 }
 
 func main() {
-	result := Main()
-	fmt.Println(result)
+	fmt.Println(Main())
 }
 ''')
 

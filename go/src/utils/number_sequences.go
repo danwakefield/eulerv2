@@ -44,6 +44,12 @@ func FibonnaciGenerator() <-chan int {
 	return ch
 }
 
+func PrimeFactorGenerator(n int) <-chan int {
+	out := make(chan int)
+
+	return out
+}
+
 func FactorGenerator(n int) <-chan int {
 	out := make(chan int)
 	go func() {
@@ -58,7 +64,8 @@ func FactorGenerator(n int) <-chan int {
 	return out
 }
 
-func FactorSet(n int) (out map[int]bool) {
+func FactorSet(n int) map[int]bool {
+	out := map[int]bool{}
 	for f := range FactorGenerator(n) {
 		out[f] = true
 	}

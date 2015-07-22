@@ -15,7 +15,9 @@ import (
 	u "utils"
 )
 
-func main() {
+var Answer = 4613732
+
+func Main() int {
 	sum := 0
 
 	for v := range u.TakeUpto(u.Mill*4, u.FibonnaciGenerator()) {
@@ -24,5 +26,9 @@ func main() {
 		}
 	}
 
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(Main())
 }

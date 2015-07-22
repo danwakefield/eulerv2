@@ -26,7 +26,7 @@ import (
 )
 
 var (
-	Answer = u.Zero
+	Answer = 76576500
 	Data   []string
 )
 

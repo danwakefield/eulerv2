@@ -14,7 +14,9 @@ import (
 	u "utils"
 )
 
-func main() {
+var Answer = 906609
+
+func Main() int {
 	var answer int
 
 	for i := 1000; i > 100; i-- {
@@ -27,6 +29,9 @@ func main() {
 			}
 		}
 	}
+	return answer
+}
 
-	fmt.Println(answer)
+func main() {
+	fmt.Println(Main())
 }

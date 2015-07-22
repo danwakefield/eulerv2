@@ -1,4 +1,5 @@
 package main
+
 /* https://projecteuler.net/problem=15
 
 Starting in the top left corner of a 2×2 grid, and only being able to
@@ -8,14 +9,12 @@ right corner. How many such routes are there through a 20×20 grid?
 
 import (
 	"fmt"
-	"strings"
-	"io/ioutil"
 	u "utils"
 )
 
 var (
 	Answer = u.Zero
-	Data []string
+	Data   []string
 )
 
 func Main() int {

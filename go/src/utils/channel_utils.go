@@ -68,3 +68,11 @@ func ChanLen(in <-chan int) int {
 	}
 	return l
 }
+
+func ChanSum(in <-chan int) int {
+	sum := 0
+	for v := range in {
+		sum += v
+	}
+	return sum
+}

@@ -13,7 +13,13 @@ import (
 	u "utils"
 )
 
+var Answer = 232792560
+
 func main() {
+	fmt.Println(Main())
+}
+
+func Main() int {
 	var failed bool
 
 	divisors := []int{}
@@ -31,8 +37,10 @@ func main() {
 		}
 
 		if !failed {
-			fmt.Println(i)
+			return i
 			break
 		}
 	}
+
+	return 0
 }

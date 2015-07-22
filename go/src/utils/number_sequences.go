@@ -50,11 +50,16 @@ func PrimeFactorGenerator(n int) <-chan int {
 	return out
 }
 
-func FactorGenerator(n int) <-chan int {
+func FactorGenerator(n int, includeN bool) <-chan int {
 	out := make(chan int)
 	go func() {
 		defer close(out)
-		for i := 1; i < SqrtInt(n)+1; i++ {
+		start := 1
+		if !includeN {
+			start = 2
+			out <- 1
+		}
+		for i := start; i < SqrtInt(n)+1; i++ {
 			if ModInt(n, i) == 0 {
 				out <- i
 				out <- n / i
@@ -66,7 +71,7 @@ func FactorGenerator(n int) <-chan int {
 
 func FactorSet(n int) map[int]bool {
 	out := map[int]bool{}
-	for f := range FactorGenerator(n) {
+	for f := range FactorGenerator(n, true) {
 		out[f] = true
 	}
 	return out

@@ -11,8 +11,6 @@ left, right, or diagonally) in the 20×20 grid?
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 	u "utils"
 )
 
@@ -41,82 +39,10 @@ var (
 )
 
 func Main() int {
-	var highest int
-	Grid := [][]int{}
-	for _, v := range strings.Split(Data, "\n") {
-		line := []int{}
-		for _, n := range strings.Split(v, " ") {
-			i, _ := strconv.Atoi(n)
-			line = append(line, i)
-		}
-		Grid = append(Grid, line)
-	}
-
-	// horizontal
-	for _, row := range Grid {
-		p := product(row...)
-		if p > highest {
-			highest = p
-		}
-	}
-
-	// Vertical
-	for i := 0; i < 20; i++ {
-		column := []int{}
-		for j := 0; j < 20; j++ {
-			column = append(column, Grid[j][i])
-		}
-		p := product(column...)
-		if p > highest {
-			highest = p
-		}
-	}
-
-	for i := 0; i < 40; i++ {
-		diagonal := []int{}
-		for j := 0; j < i; j++ {
-			k := i - j
-			if k < 20 && j < 20 {
-				diagonal = append(diagonal, Grid[k][j])
-			}
-		}
-		p := product(diagonal...)
-		if p > highest {
-			highest = p
-		}
-	}
-
+	_ = Data
 	return -1
 }
 
-func product(ints ...int) int {
-	var highest int
-	li := len(ints)
-	if li < 4 {
-		return highest
-	}
-
-	start := 0
-	for {
-		product := 1
-		if li < start+4 {
-			break
-		}
-
-		for i := start; i < start+4; i++ {
-			product *= ints[i]
-		}
-
-		if product > highest {
-			highest = product
-		}
-		start++
-	}
-
-	return highest
-}
-
 func main() {
-	result := Main()
-	fmt.Println(result)
+	fmt.Println(Main())
 }

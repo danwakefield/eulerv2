@@ -14,7 +14,7 @@ import "fmt"
 // between the sum of the squares of the first one hundred natural
 // numbers and the square of the sum.
 
-// Answer: 25164150
+var Answer = 25164150
 
 func squareSums(n int) int {
 	lastSquare := 16
@@ -32,7 +32,7 @@ func squareSums(n int) int {
 	return total
 }
 
-func main() {
+func Main() int {
 	sumOfSquare := squareSums(100)
 	squareOfSum := 0
 	for i := 1; i < 101; i++ {
@@ -41,8 +41,13 @@ func main() {
 	squareOfSum *= squareOfSum
 
 	if squareOfSum > sumOfSquare {
-		fmt.Println(squareOfSum - sumOfSquare)
+		return squareOfSum - sumOfSquare
 	} else {
-		fmt.Println(sumOfSquare - squareOfSum)
+		return sumOfSquare - squareOfSum
 	}
+
+}
+
+func main() {
+	fmt.Println(Main())
 }

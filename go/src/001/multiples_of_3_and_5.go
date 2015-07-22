@@ -9,25 +9,21 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"time"
-	"utils"
+	u "utils"
 )
 
-func main() {
-	timerChan := make(chan struct{})
-	go utils.Timer(timerChan)
-	defer func() {
-		close(timerChan)
-		time.Sleep(20)
-	}()
+var Answer = 233168
 
+func Main() int {
 	var sum int
-	for i := 0; i < utils.Thou; i++ {
-		if utils.ModInt(i, 3) == 0 || utils.ModInt(i, 5) == 0 {
+	for i := 0; i < u.Thou; i++ {
+		if u.ModInt(i, 3) == 0 || u.ModInt(i, 5) == 0 {
 			sum += i
 		}
 	}
+	return sum
+}
 
-	fmt.Printf("%s: %d\n", os.Args[0], sum)
+func main() {
+	fmt.Println(Main())
 }
